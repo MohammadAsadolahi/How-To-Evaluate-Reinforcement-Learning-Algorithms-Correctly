@@ -9,7 +9,7 @@ unlike considering diffrences Reinforcement Learning has with other paradigms of
 
   I studied state of the art algorithms in continous and discrete action spaces. The problem was Hunger Games😉. The  algorithms need many iterations and interactions to learn an moderate policy if not an near optimal (may assume a good policy if not optimal one). And I tried to solve this problem (yes I was kind of crazy at that time)     
   
-  I did it however and developed an stochastic off-policy algorithm called TDS which outperforms DDPG, TD3 and SAC. (the work Is under peer review and I will upload it on my Github as soon as it is printed)   
+  I did it however and developed an stochastic off-policy algorithm called which outperforms DDPG, TD3 and SAC. (the work Is under peer review and I will upload it on my Github as soon as it is printed)   
 ### Propblem Statement:   
 The problem was ….. let me provide an example first. Back then I wrote an new algorithms which was simple and It was ouperforming many state of the art algorithms in discrete action spaces(DDQN)  if they compared according to the number of episodes.
 But all of the time my code spite of being simple would take 
