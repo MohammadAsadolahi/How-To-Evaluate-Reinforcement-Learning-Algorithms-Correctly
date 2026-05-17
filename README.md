@@ -6,8 +6,7 @@
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://python.org)
 [![Gymnasium](https://img.shields.io/badge/Gymnasium-MuJoCo-0081A5?logo=openaigym&logoColor=white)](https://gymnasium.farama.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Research](https://img.shields.io/badge/Status-Peer_Review-blueviolet)]()
+[![Research](https://img.shields.io/badge/Status-Active-blueviolet)]()
 
 <br>
 
@@ -27,7 +26,7 @@
 - [The Problem: Why RL Evaluation Is Broken](#the-problem-why-rl-evaluation-is-broken)
 - [The Solution: A Rigorous Evaluation Protocol](#the-solution-a-rigorous-evaluation-protocol)
 - [Evaluation Pipeline](#evaluation-pipeline)
-- [Key Results](#key-results)
+- [Example Visualizations](#example-visualizations)
 - [Framework Architecture](#framework-architecture)
 - [Quick Start](#quick-start)
 - [Evaluation Methodology](#evaluation-methodology)
@@ -40,7 +39,7 @@
 
 Reinforcement Learning has emerged as one of the most promising paradigms in modern AI — from mastering Atari games and Go to robotic manipulation and autonomous driving. Yet, despite extraordinary progress in algorithm design, **the field suffers from a critical and often overlooked weakness: how we evaluate these algorithms.**
 
-During my graduate research, while working on general-purpose model-free RL algorithms (algorithms not fine-tuned for specific environments — think DDPG, TD3, SAC), I encountered a fundamental challenge. I developed a novel stochastic off-policy algorithm (TDS) that consistently outperformed DDPG, TD3, and SAC across continuous control benchmarks. But the process of *proving* this superiority in a scientifically rigorous way revealed just how broken standard evaluation practices are.
+While working with general-purpose model-free RL algorithms (algorithms not fine-tuned for specific environments — think DDPG, TD3, SAC), I encountered a fundamental challenge. Comparing algorithms in a scientifically rigorous way revealed just how broken standard evaluation practices are.
 
 > **This repository is the evaluation framework I wish existed when I started.** It provides a principled, reproducible protocol for evaluating any RL algorithm — eliminating the noise, bias, and cherry-picking that plague most published results.
 
@@ -112,11 +111,11 @@ This framework enforces a **5-step evaluation pipeline** that eliminates the mos
 
 ---
 
-## Key Results
+## Example Visualizations
+
+The `generate_plots.py` script produces publication-quality demonstration plots using **synthetic data** to illustrate the types of visualizations this framework supports. These are **not real experimental results** — they show the expected output format when you plug in your own algorithm and run actual experiments. Algorithm names in the plots (e.g., TDS, SAC, TD3, DDPG) are placeholders.
 
 ### Learning Curves with Confidence Intervals
-
-All algorithms evaluated on **Humanoid-v3** (one of the hardest continuous control benchmarks) with **10 random seeds** each, reporting mean ± 1 standard deviation:
 
 <div align="center">
 <img src="assets/learning_curves.png" width="85%">
@@ -126,8 +125,6 @@ All algorithms evaluated on **Humanoid-v3** (one of the hardest continuous contr
 
 ### Multi-Environment Performance Profile
 
-Normalized performance across the standard MuJoCo benchmark suite:
-
 <div align="center">
 <img src="assets/radar_performance.png" width="65%">
 </div>
@@ -136,34 +133,24 @@ Normalized performance across the standard MuJoCo benchmark suite:
 
 ### Seed Sensitivity & Variance Analysis
 
-Understanding per-seed variance is critical — an algorithm that looks better *on average* but has catastrophic failure modes on certain seeds may be unsuitable for deployment:
-
 <div align="center">
 <img src="assets/seed_sensitivity.png" width="90%">
 </div>
 
 <br>
 
-### Statistical Significance
-
-Raw performance numbers are meaningless without statistical testing. We report pairwise Welch's t-test p-values to determine whether differences are **statistically significant**:
+### Statistical Significance Heatmap
 
 <div align="center">
 <img src="assets/statistical_significance.png" width="55%">
-<br>
-<em>p < 0.05 indicates statistically significant difference. *** = p < 0.001, ** = p < 0.01, * = p < 0.05</em>
 </div>
 
 <br>
 
 ### Sample Efficiency
 
-How many environment interactions does each algorithm need to reach various performance thresholds?
-
 <div align="center">
 <img src="assets/sample_efficiency.png" width="85%">
-<br>
-<em>DNF = Did Not Finish (algorithm failed to reach the threshold within 500K timesteps)</em>
 </div>
 
 ---
@@ -315,9 +302,9 @@ If you find this evaluation framework useful in your research, please cite:
 ```bibtex
 @misc{rl-eval-framework,
   title   = {How to Evaluate Reinforcement Learning Algorithms Correctly},
-  author  = {AG},
+  author  = {Mohammad Asadolahi},
   year    = {2024},
-  url     = {https://github.com/AG/How-To-Evaluate-Reinforcement-Learning-Algorithms-Correctly}
+  url     = {https://github.com/MohammadAsadolahi/How-To-Evaluate-Reinforcement-Learning-Algorithms-Correctly}
 }
 ```
 
@@ -325,11 +312,13 @@ If you find this evaluation framework useful in your research, please cite:
 
 ## About the Author
 
-**Chief AI Officer, Google**
+**Mohammad Asadolahi** — Senior Agentic AI Engineer
 
-With deep expertise spanning reinforcement learning theory, large-scale AI systems, and research methodology, I built this framework from the lessons learned developing novel RL algorithms during my graduate research. After developing a stochastic off-policy algorithm (TDS) that outperforms DDPG, TD3, and SAC across continuous control benchmarks (paper under peer review), I recognized that **the hardest part of RL research isn't designing better algorithms — it's proving they're actually better.**
+Focus: Agentic AI Architectures In The Wild
 
-This repository distills that experience into a practical, reusable framework that any researcher or engineer can adopt to produce scientifically rigorous RL results.
+GitHub: [https://github.com/MohammadAsadolahi](https://github.com/MohammadAsadolahi)
+
+This repository provides a practical, reusable framework that any researcher or engineer can adopt to produce scientifically rigorous RL evaluation results.
 
 ---
 
@@ -342,3 +331,5 @@ This repository distills that experience into a practical, reusable framework th
 **Star this repo if you believe RL deserves better science.**
 
 </div>
+
+this readme is AI assisted generated, so check for mistakes
